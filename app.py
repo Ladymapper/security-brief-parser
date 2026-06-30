@@ -60,7 +60,7 @@ if process:
     with st.spinner("Processing..."):
 
         # Bronze
-     bronze_data = save_bronze(raw_text)
+        bronze_data = save_bronze(raw_text)
 
         # Silver
         incidents = extract_silver(raw_text)
