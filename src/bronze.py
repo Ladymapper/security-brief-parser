@@ -1,4 +1,5 @@
 # Bronze layer : save raw inout
+import os
 import json
 from datetime import datetime
 
@@ -15,7 +16,5 @@ def save_bronze(raw_text, folder="bronze"):
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(raw_text)
-
-    print(f"Bronze saved: {filepath}")
 
     return filepath
