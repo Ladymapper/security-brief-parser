@@ -1,21 +1,14 @@
-import os
 from datetime import datetime
 
-
-def save_bronze(raw_text, folder="bronze"):
+def save_bronze(raw_text):
     """
-    Saves the raw weekly brief to the Bronze layer.
+    Bronze layer:
+    Store the raw text in memory instead of writing to disk.
     """
 
-    os.makedirs(folder, exist_ok=True)
+    bronze_data = {
+        "timestamp": datetime.now().isoformat(),
+        "raw_text": raw_text
+    }
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-
-    filepath = os.path.join(folder, f"brief_raw_{timestamp}.txt")
-
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(raw_text)
-
-    print(f"Bronze saved: {filepath}")
-
-    return filepath
+    return bronze_data
