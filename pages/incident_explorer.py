@@ -3,9 +3,13 @@ import pandas as pd
 
 st.title("📋 Incident Explorer")
 
-if st.session_state.incidents is None:
+if "incidents" not in st.session_state:
+    st.warning("Please process a weekly brief first.")
+    st.stop()
 
-    st.warning("No incidents available.")
+if st.session_state.incidents is None:
+    st.warning("Please process a weekly brief first.")
+    st.stop()
 
 else:
 
