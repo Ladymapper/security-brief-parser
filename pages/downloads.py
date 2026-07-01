@@ -4,10 +4,13 @@ import pandas as pd
 
 st.title("📥 Downloads")
 
+if "incidents" not in st.session_state:
+    st.warning("Please process a weekly security brief first.")
+    st.stop()
+
 if st.session_state.incidents is None:
-
-    st.warning("Nothing to download.")
-
+    st.warning("Please process a weekly security brief first.")
+    st.stop()
 else:
 
     incidents = st.session_state.incidents
