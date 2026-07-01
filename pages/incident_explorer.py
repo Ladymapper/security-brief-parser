@@ -1,20 +1,17 @@
 import streamlit as st
+import pandas as pd
 
 st.title("📋 Incident Explorer")
 
-st.info(
-    "The structured incident table will appear here after processing a weekly brief."
-)
-
 if st.session_state.incidents is None:
 
-    st.warning(
-        "No incident data available yet.\n\nReturn to the Home page and process a weekly security brief."
-    )
+    st.warning("No incidents available.")
 
 else:
 
+    df = pd.DataFrame(st.session_state.incidents)
+
     st.dataframe(
-        st.session_state.incidents,
-        use_container_width=True,
+        df,
+        use_container_width=True
     )
