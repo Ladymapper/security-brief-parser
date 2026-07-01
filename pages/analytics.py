@@ -1,16 +1,20 @@
-
 import streamlit as st
+import pandas as pd
 
 st.title("📊 Analytics")
 
-if st.session_state.gold is None:
+if st.session_state.incidents is None:
 
-    st.warning(
-        "No analytics available yet."
-    )
+    st.warning("No data available.")
 
 else:
 
-    st.success(
-        "Charts will be added in Milestone 3."
-    )
+    df = pd.DataFrame(st.session_state.incidents)
+
+    st.subheader("Incidents by Category")
+
+    st.bar_chart(df["category"].value_counts())
+
+    st.subheader("Incidents by State")
+
+    st.bar_chart(df["state"].value_counts())
